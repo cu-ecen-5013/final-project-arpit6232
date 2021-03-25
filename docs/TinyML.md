@@ -16,7 +16,7 @@ Tiny machine learning, or TinyML, is an emerging field that is at the intersecti
 While  [TensorFlow](https://www.tensorflow.org/) is written with fast custom C++ code under the hood, it has a high level Python API. A custom neural network using Tensorflow, [TensorFlow Lite](https://www.tensorflow.org/) and [TensorFlow Micro](https://www.tensorflow.org/lite/microcontrollers)
 
 <!-- Insert Integration TinyML image here  -->
-![Integration](images/TinyML_integration.png=100x100)
+<!-- ![Integration](images/TinyML_integration.png=100x100) -->
 
 TinyML helps to provide a unique solution by summarizing and analyzing data at the edge on low power embedded devices, TinyML can provide smart summary statistics that take these previously lost patterns, anomalies, and advanced analytics into account. 
 
@@ -57,7 +57,7 @@ In order to get to obtain good accuracy and deisgn analysis, modern nueral netwo
 
 
 <!-- Insert GFLOPS_VS_MODELs_Param.png -->
-![GFLOPS Vs Models](images/GFLOPS_VS_MODELs_Param.png=150x150)
+![GFLOPS Vs Models](images/GFLOPS_VS_MODELs_Param.png)
 <!-- Source: S. Bianco, R. Cadene, L. Celona and P. Napoletano, "Benchmark Analysis of Representative Deep Neural Network Architectures," in IEEE Access, vol. 6, pp. 64270-64277, 2018, doi: 10.1109/ACCESS.2018.2877890. -->
 
 From the above figure lets focus onto [AlexNet](https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf), which happened in 2012 which was used to predict a thousand classes from [ImageNet](http://www.image-net.org/) data set. It had an  accuracy of 57.1%. And its model size was 61 megabytes in size. To obtain better accuracy  [VGGNet](https://arxiv.org/abs/1409.1556) came along in 2014 which boosted the accuracy to 71.5%. But with that came a boost from 60 megabytes model size to 528 megabytes.Additionally in 2015, Microsoft released [ResNet](https://arxiv.org/abs/1512.03385), residual nets with accuracy of 75.8%
