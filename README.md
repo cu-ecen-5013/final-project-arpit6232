@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# final-project-arpit6232
-=======
 # Visual Wake Words for Tensorflow 2.0
 
 This repository contains Tensorflow 2.0 code to fine-tune a pretrained MobileNetV1 model on the Visual Wake Words dataset, and export the trained model to Tensorflow Lite for Microcontrollers. 
@@ -119,4 +116,3 @@ The Visual Wake Words dataset was introduced in (Chowdhery et al. 2019):
   bibsource = {dblp computer science bibliography, https://dblp.org}
 }
 ```
->>>>>>> 010da02d643ba7962bcdb5a38afeb7579ac5f779
