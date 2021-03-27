@@ -31,3 +31,8 @@ if [[ DEVICE -eq "2GB" ]]
 then 
     wget -P "$HOME/Downloads" -q -O tmp.zip "www.xyz.com" && unzip tmp.zip && rm tmp.zip
 fi
+
+# Echo the Requested String on the Stdout
+echo "Nvidia Binaries for Jetson ${DEVICE} downloaded at ${HOME}/Downloads"
+
+exit 0
