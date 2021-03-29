@@ -5,7 +5,7 @@ sudo apt-get upgrade -y
 sudo apt-get install wget
 sudo apt-get install tar
 
-CURR_DIR = $(pwd)
+CURR_DIR=$(pwd)
 
 INSTALL_DIR=${HOME}
 # Direct Jetson support starts at 1.8.10
@@ -13,7 +13,7 @@ ARDUINO_VERSION=1.8.10
 # ARDUINO_VERSION=1.8.13
 
 # Download Arduino IDE
-wget -N https://downloads.arduino.cc/arduino-$ARDUINO_VERSION-linuxaarch64.tar.xz
+wget -N https://downloads.arduino.cc/arduino-$ARDUINO_VERSION-linuxaarch64.tar.xz --no-check-certificate
 tar -C $INSTALL_DIR/ -xvf arduino-${ARDUINO_VERSION}-linuxaarch64.tar.xz
 cd $INSTALL_DIR/arduino-${ARDUINO_VERSION}
 sudo ./install.sh
