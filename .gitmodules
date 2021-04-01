@@ -1,0 +1,3 @@
+[submodule "visualwakeup_aesd"]
+	path = visualwakeup_aesd
+	url = https://github.com/arpit6232/visualwakeup_aesd
