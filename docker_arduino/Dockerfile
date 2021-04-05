@@ -111,6 +111,10 @@ RUN pip3 install -U pip \
     -U colcon-core \
     -U colcon-common-extensions
 
+RUN mkdir -p /etc/udev/rules.d
+
+COPY 99-arduino-101.rules /etc/udev/rules.d/
+
 RUN cd $HOME
 
 RUN echo "Installing Arduino CLI"
@@ -118,4 +122,6 @@ RUN echo "Installing Arduino CLI"
 # Script to Begin the Yocto Build for Jetson Image
 COPY install_cli.sh $HOME
 
-CMD [ "bash", "-c", "./install_cli.sh" ]
+RUN chmod +x $HOME/install_cli.sh
+
+CMD [ "bash", "-c", "./$HOME/install_cli.sh" ]

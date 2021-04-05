@@ -17,10 +17,10 @@ mv $HOME/bin/arduino-cli $HOME/ardino-cli
 echo "Setting up udev rules for Arduino"
 
 # Setup Udev Rules
-touch /etc/udev/rules.d/99-arduino-101.rules
-echo "# Arduino 101 in DFU Mode \n\n" > /etc/udev/rules.d/99-arduino-101.rules
-echo 'SUBSYSTEM=="tty", ENV{ID_REVISION}=="8087", ENV{ID_MODEL_ID}=="0ab6", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0"' >> /etc/udev/rules.d/99-arduino-101.rules
-echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0aba", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1"' >> /etc/udev/rules.d/99-arduino-101.rules
+sudo touch /etc/udev/rules.d/99-arduino-101.rules
+sudo echo "# Arduino 101 in DFU Mode \n\n" > /etc/udev/rules.d/99-arduino-101.rules
+sudo echo 'SUBSYSTEM=="tty", ENV{ID_REVISION}=="8087", ENV{ID_MODEL_ID}=="0ab6", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0"' >> /etc/udev/rules.d/99-arduino-101.rules
+sudo echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0aba", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1"' >> /etc/udev/rules.d/99-arduino-101.rules
 
 echo "Moving back to $HOME"
 cd $HOME
