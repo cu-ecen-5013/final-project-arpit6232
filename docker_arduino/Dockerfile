@@ -1,14 +1,17 @@
 # AESD Course Project Dockerfile for setting up Arduino IDE and Arduino CLI
-FROM ubuntu:18.04
+# FROM ubuntu:18.04
+FROM aarch64/ubuntu:17.04
 
-ENV INSTALL_DIR=$HOME
+ENV INSTALL_DIR="\home"
 ENV ARDUINO_VERSION="1.8.10"
 ENV PORT="/dev/ttyACM0"
 ENV BOARD_NAME="Arduino Nano 33 BLE"
 ENV FQBN="arduino:mbed:nano33ble"
 ENV ARDUINO_CORE="arduino:mbed"
-ENV ARDUINO_CODE_DIR="$HOME/Arduino/libraries/arduino-library/examples/person_detection"
+ENV ARDUINO_CODE_DIR="/root/Arduino/libraries/arduino-library/examples/person_detection"
 ENV DEV_LOC="/dev/serial/by-id/usb-Arduino_Nano_33_BLE_AD986F55B90290BE-if00"
+ENV ARDUINO_IDE_EXE="./$INSTALL_DIR/bin/arduino-cli"
+
 
 ## Reference: https://github.com/cu-ecen-5013/final-project-CalebProvost/blob/docker/Dockerfile
 # Install build system's dependencies
@@ -115,13 +118,51 @@ RUN mkdir -p /etc/udev/rules.d
 
 COPY 99-arduino-101.rules /etc/udev/rules.d/
 
-RUN cd $HOME
+RUN cd /home
 
 RUN echo "Installing Arduino CLI"
 
-# Script to Begin the Yocto Build for Jetson Image
-COPY install_cli.sh $HOME
+RUN mkdir -p /home/arduino_cli
 
-RUN chmod +x $HOME/install_cli.sh
+RUN git clone https://github.com/arpit6232/custom_arduino_cli.git /home/arduino_cli
 
-CMD [ "bash", "-c", "./$HOME/install_cli.sh" ]
+RUN cp /home/arduino_cli/bin/arduino-cli /home
+
+RUN export PATH="/home/arduino_cli/bin:$PATH" 
+
+RUN echo "Setting up udev rules for Arduino"
+
+# Setup Udev Rules
+RUN sudo touch /etc/udev/rules.d/99-arduino-101.rules
+RUN sudo echo "# Arduino 101 in DFU Mode \n\n" > /etc/udev/rules.d/99-arduino-101.rules
+RUN sudo echo 'SUBSYSTEM=="tty", ENV{ID_REVISION}=="8087", ENV{ID_MODEL_ID}=="0ab6", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0"' >> /etc/udev/rules.d/99-arduino-101.rules
+RUN sudo echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0aba", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1"' >> /etc/udev/rules.d/99-arduino-101.rules
+
+RUN echo "Moving back to INSTALL_DIR"
+RUN cd /home
+
+# Setup the core, library and the cli
+RUN echo "Setting up arduino:mbed core and setting up config"
+RUN ./home/arduino-cli core install ${ARDUINO_CORE}
+RUN ./home/arduino-cli config init
+RUN ./home/arduino-cli config set library.enable_unsafe_install true
+
+# Libraries Install
+RUN echo "Installing Libraries"
+RUN ./home/arduino-cli lib install "Arduino_TensorFlowLite@2.4.0-ALPHA"
+RUN ./home/arduino-cli lib install --git-url "https://github.com/arpit6232/arduino-library.git"
+RUN ./home/arduino-cli lib install "Arduino_LSM9DS1@1.1.0"
+RUN ./home/arduino-cli lib install "ArduinoBLE@1.1.3"
+
+# Compile code
+RUN echo "Compiling Person Detection Code"
+RUN ./home/arduino-cli compile -b ${FQBN} ${ARDUINO_CODE_DIR} -v
+
+# VOLUME /dev/serial/by-id/usb-Arduino_Nano_33_BLE_AD986F55B90290BE-if00
+VOLUME /dev/ttyACM0
+
+# #Upload Code 
+# RUN echo "Uploading code to Person Detection Code"
+# RUN ./home/arduino-cli upload -b ${FQBN} -p ${PORT} ${ARDUINO_CODE_DIR} -v
+
+CMD [ "sudo", "./home/arduino-cli", "upload", "-b", "arduino:mbed:nano33ble", "-p", "/dev/ttyACM0", "/root/Arduino/libraries/arduino-library/examples/person_detection", "-v"]
