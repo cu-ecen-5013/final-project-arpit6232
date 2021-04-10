@@ -28,6 +28,10 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 ### Documentation
 1. [Synchronize Time on Jetson](https://github.com/cu-ecen-5013/final-project-arpit6232/blob/reset_jetson_time/date-sync.md)
 
+### Issues worked on :
+1. https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/12
+2. https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/11
+
 ## Sprint 1 
 
 ### Code
@@ -43,9 +47,7 @@ Currently this repository should hold all the independent goals are separate rep
 
 
 ### Comments 
-Currently this repository should hold all the independent goals are separate repositories as much of the code is based on development version of other libraries. And involves testing and development. 
-
-Specifically : https://github.com/arduino/arduino-cli/issues/1254#issuecomment-813161941
+Currently this repository should hold all the independent goals as separate repositories/folders as much of the code is based on development version of other libraries. And involves testing and development. 
 
 ### TEAM MEMBERS 
 - Arpit Savarkar 
