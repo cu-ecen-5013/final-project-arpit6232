@@ -1,6 +1,5 @@
 # AESD Course Project Dockerfile for setting up Arduino IDE and Arduino CLI
-# FROM ubuntu:18.04
-FROM aarch64/ubuntu:17.04
+FROM ubuntu:18.04
 
 ENV INSTALL_DIR="\home"
 ENV ARDUINO_VERSION="1.8.10"
