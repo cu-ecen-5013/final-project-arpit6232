@@ -11,9 +11,10 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 
 - Issues in this repository are duplicated. Please use this link only tracking on [issues](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues)
 
-# Issues are tracked here : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues
+## Issues are not tracked in this repository  
 
-# Not all issues are duplicated in this repository. (Reger here for Issues for Sprints: https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues)
+## Issues are tracked here: https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues
+
 
 ## Sprint 2 
 
