@@ -23,7 +23,7 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 2. Integrate Camera for gstreamer 
     - https://github.com/OE4T/meta-tegra/discussions/653#discussioncomment-582858
     - https://forums.developer.nvidia.com/t/unable-to-detect-logitech-c270-on-jp-4-5-1-on-jetson-nano/174734/2
-3. Create driver for vitualwifi for cfg80211 : 
+3. Create driver for vitualwifi for cfg80211 : https://github.com/cu-ecen-5013/final-project-arpit6232/tree/main/wifi_driver
 
 ### Documentation
 1. [Synchronize Time on Jetson](https://github.com/cu-ecen-5013/final-project-arpit6232/blob/reset_jetson_time/date-sync.md)
