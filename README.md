@@ -11,6 +11,22 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 
 - Issues in this repository are duplicated. Please use this link only tracking on [issues](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues)
 
+# Issues are tracked here : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues
+
+# Not all issues are duplicated in this repository. (Reger here for Issues for Sprints: https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues)
+
+## Sprint 2 
+
+### Code
+1. Dockerize Arduino Build Environment : https://github.com/cu-ecen-5013/final-project-arpit6232/tree/main/docker_arduino
+2. Integrate Camera for gstreamer 
+    - https://github.com/OE4T/meta-tegra/discussions/653#discussioncomment-582858
+    - https://forums.developer.nvidia.com/t/unable-to-detect-logitech-c270-on-jp-4-5-1-on-jetson-nano/174734/2
+3. Create driver for vitualwifi for cfg80211 : 
+
+### Documentation
+1. [Synchronize Time on Jetson](https://github.com/cu-ecen-5013/final-project-arpit6232/blob/reset_jetson_time/date-sync.md)
+
 ## Sprint 1 
 
 ### Code
@@ -20,6 +36,10 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 ### Documentation
 1. [Arduino Interface for Jetson](docs/arduino_setup.md)
 2. [Jetson Setup for Jetson Nano](install_jetson_yocto.md)
+
+### Comments 
+Currently this repository should hold all the independent goals are separate repositories as much of the code is based on development version of other libraries. And involves testing and development. 
+
 
 ### Comments 
 Currently this repository should hold all the independent goals are separate repositories as much of the code is based on development version of other libraries. And involves testing and development. 

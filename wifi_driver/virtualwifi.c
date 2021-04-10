@@ -20,7 +20,6 @@ struct navifly_context {
     struct wiphy *wiphy;
     struct net_device *ndev;
 
-    /* DEMO */
     struct semaphore sem;
     struct work_struct ws_connect;
     char connecting_ssid[sizeof(SSID_DUMMY)];
@@ -395,10 +394,12 @@ static void navifly_free(struct navifly_context *ctx) {
 static struct navifly_context *g_ctx = NULL;
 
 static int __init virtual_wifi_init(void) {
+
+    printk(KERN_INFO "Hello, from Virtual Wifi\n");
+    printk(KERN_INFO "Virtual Wifi added to Kernel Module\n");
     g_ctx = navifly_create_context();
 
     if (g_ctx != NULL) {
-        /*DEMO*/
         sema_init(&g_ctx->sem, 1);
         INIT_WORK(&g_ctx->ws_connect, navifly_connect_routine);
         g_ctx->connecting_ssid[0] = 0;
@@ -411,6 +412,8 @@ static int __init virtual_wifi_init(void) {
 }
 
 static void __exit virtual_wifi_exit(void) {
+
+    printk(KERN_INFO "Exiting Virtual Wifi Kernel Module\n");
     /* make sure that no work is queued */
     cancel_work_sync(&g_ctx->ws_connect);
     cancel_work_sync(&g_ctx->ws_disconnect);
