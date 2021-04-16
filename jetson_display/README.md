@@ -1,4 +1,4 @@
-# Library to Use with Adafruit 0.56" 4-Digit 7-Segment Display w/I2C for Jetson Nano 
+# Jetson Nano Interface for GPIO and 4-Digit 7-Segment Display
 
 ## Setup 
 - Dependencies 
