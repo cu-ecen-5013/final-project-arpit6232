@@ -11,10 +11,20 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 
 - Issues in this repository are duplicated. Please use this link only tracking on [issues](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues)
 
+
 ## Issues are not tracked in this repository  
 
 ## Issues are tracked here: https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues
 
+## Project Schedule : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/wiki/Project-Schedule
+
+
+## Sprint 3
+
+### Code and Linked Issues
+1. State Machine and API Development and response for Arduino BLE 33 Sense : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/24
+2. Develop and Test Driver for I2C Based 4 Character 7 Segment Display and GPIO based LED functioning : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/24
+3. Board Partition Bring Up and Forum Communication : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/22
 
 ## Sprint 2 
 
