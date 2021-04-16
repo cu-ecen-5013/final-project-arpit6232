@@ -26,6 +26,9 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 2. Develop and Test Driver for I2C Based 4 Character 7 Segment Display and GPIO based LED functioning : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/24
 3. Board Partition Bring Up and Forum Communication : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/22
 
+### Documentation 
+1. [Wiring Diagram and Setup for GPIO](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/blob/master/src/GPIO_setup.md)
+
 ## Sprint 2 
 
 ### Code
