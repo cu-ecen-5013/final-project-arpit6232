@@ -1,4 +1,4 @@
-# Jetson Nano Interface for GPIO and 4-Digit 7-Segment Displa
+# Jetson Nano Interface for GPIO and 4-Digit 7-Segment Display
 
 ## Setup 
 - Dependencies 
