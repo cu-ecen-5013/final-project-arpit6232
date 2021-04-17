@@ -7,7 +7,7 @@ BOARD_NAME="Arduino Nano 33 BLE"
 FQBN="arduino:mbed:nano33ble"
 ARDUINO_CORE="arduino:mbed"
 
-alias acli="./bin/arduino-cli"
+alias acli="/bin/arduino-cli"
 
 acli core install ${ARDUINO_CORE}
 
