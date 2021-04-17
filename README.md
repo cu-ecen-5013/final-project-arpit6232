@@ -23,7 +23,7 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 
 ### Code and Linked Issues
 1. State Machine and API Development and response for Arduino BLE 33 Sense : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/24
-2. Develop and Test Driver for I2C Based 4 Character 7 Segment Display and GPIO based LED functioning : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/24
+2. Develop and Test Driver for I2C Based 4 Character 7 Segment Display and GPIO based LED functioning : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/23
 3. Board Partition Bring Up and Forum Communication : https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/22
 
 ### Documentation 
