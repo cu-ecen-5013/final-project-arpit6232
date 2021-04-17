@@ -7,7 +7,7 @@ BOARD_NAME="Arduino Nano 33 BLE"
 FQBN="arduino:mbed:nano33ble"
 ARDUINO_CORE="arduino:mbed"
 
-alias acli="/bin/arduino-cli"
+alias acli="/usr/bin/arduino-cli"
 
 acli core install ${ARDUINO_CORE}
 
@@ -27,3 +27,9 @@ acli lib install "ArduinoBLE@1.2.0"
 sudo stty -F /dev/ttyACM0 cs8 9600 ignbrk -brkint -icrnl -imaxbel -opost -onlcr -isig -icanon -iexten -echo -echoe -echok -echoctl -echoke noflsh -ixon -crtscts
 
 sudo chmod 777 /dev/ttyACM0
+
+PERSON_DETECTION_DIR="/home/root/Arduino/libraries/arduino-library/examples/person_detection"
+
+acli compile -b ${FQBN} ${PERSON_DETECTION_DIR} 
+
+acli upload -b ${FQBN} -p ${PORT} ${PERSON_DETECTION_DIR} 
