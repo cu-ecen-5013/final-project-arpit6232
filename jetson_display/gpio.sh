@@ -2,19 +2,8 @@
 
 # Bash Script to initialize GPIO
 
-# sudo groupadd gpio
-# sudo usermod -aG gpio root
-# su root
-sudo chgrp gpio /sys/class/gpio/export
-sudo chgrp gpio /sys/class/gpio/unexport
-sudo chmod 775 /sys/class/gpio/export
-sudo chmod 775 /sys/class/gpio/unexport
-
-echo "79" > /sys/class/gpio/export
-chgrp -HR /sys/class/gpio/gpio79
-chmod -R 775 /sys/class/gpio/gpio79
-
-echo "out" > /sys/class/gpio/gpio79/direction
+echo 79 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio79/direction
 
 if [[ "$#" -ne 1 ]]  
 then 
@@ -34,6 +23,5 @@ then
 	echo 0 > /sys/class/gpio/gpio79/value
 	exit 0	
 fi
-
 
 echo "79" > /sys/class/gpio/unexport
