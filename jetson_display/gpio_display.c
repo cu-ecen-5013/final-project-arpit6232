@@ -1,13 +1,19 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <termios.h>
-#include <time.h>
+// #include <termios.h>
+// #include <time.h>
 #include <stdbool.h>
 #include <stdarg.h>
-#include<syslog.h>
+#include <syslog.h>
 
-#include "JHLEDBackpack.h"
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <signal.h>
+#include <fcntl.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <string.h>
+#include <linux/limits.h>
 
 bool do_gpio() {
 
@@ -57,59 +63,10 @@ bool light_down_led() {
     }
 }
 
-HT16K33* do_sevenseg() {
-    int rc;
-
-    HT16K33 *displayMatrix = new HT16K33() ;
-    // Default I2C Bus 1
-    rc = displayMatrix->openHT16K33(); 
-    if(rc < 0) {
-        return NULL;
-        printf("Error: %d", displayMatrix->error);
-    }
-
-    return displayMatrix;
-}
-
-bool light_one_sevenseg(HT16K33 *displayMatrix) {
-
-    displayMatrix->printFloat(1.000,3,DEC);
-    displayMatrix->writeDisplay();
-
-    /**
-     * Stay long enough to make it visible
-     * TODO: Optmize it to prevent IDLE system time
-     */
-    sleep(3);
-
-    // Turn off the display oscillator
-    displayMatrix->end() ;
-    displayMatrix->closeHT16K33();
-
-    return true;
-}
-
-bool light_zero_sevenseg(HT16K33 *displayMatrix) {
-
-    displayMatrix->printFloat(0.000,3,DEC);
-    displayMatrix->writeDisplay();
-
-    /**
-     * Stay long enough to make it visible
-     * TODO: Optmize it to prevent IDLE system time
-     */
-    sleep(3);
-
-    // Turn off the display oscillator
-    displayMatrix->end() ;
-    displayMatrix->closeHT16K33();
-
-    return true;
-}
-
 int main(int argc, char* argv[]) {
 
     openlog(NULL, 0, LOG_USER);
+
     int rc = 0;
     
     if(argv[1],"help") {
@@ -123,10 +80,6 @@ int main(int argc, char* argv[]) {
         printf("./display gpio on\n");
         printf(" ** EXAMPLE 2 ** \n");
         printf("./display gpio off\n");
-        printf(" ** EXAMPLE 3 ** \n");
-        printf("./display sevenseg 1\n");
-        printf(" ** EXAMPLE 4 ** \n");
-        printf("./display sevenseg 0\n");
         return 0;
     } else if(strcmp(argv[1],"gpio")) {
         
@@ -153,33 +106,8 @@ int main(int argc, char* argv[]) {
             syslog(LOG_ERR, "Invalid State option for GPIO");
         }
 
-    } else if(strcmp(argv[1],"sevenseg")) {
-
-        /* Setup Seven segment display function calls */
-        HT16K33 *displayMatrix = do_sevenseg();
-        if(displayMatrix == NULL) {
-            printf("Sevenseg Instatiation failed in main\n");
-            return -1;
-        }
-
-        /* Display 1 on Seven segment display Logic */
-        if(strcmp(argv[2],"one")) {
-            rc = light_one_sevenseg(displayMatrix);
-            if(rc == 0) {
-                printf("Unable to Lightup LED\n");
-            }
-        } else if(strcmp(argv[2],"zero")) { /* Display 0 on Seven segment display Logic */
-            rc = light_zero_sevenseg(displayMatrix);
-            if(rc == 0) {
-                printf("Unable to Lightup LED\n");
-            }
-        } else {
-            printf("Invalid Seven segment option\n");
-            syslog(LOG_ERR, "Invalid State option for Sevens Segment");
-        }
-
     } else {
-        printf("1st Argument should specify 'gpio' or 'sevenseg' \r\n ");
+        printf("1st Argument should specify 'gpio' \r\n ");
         syslog(LOG_ERR, "Display Method not selected");
     }
 }
