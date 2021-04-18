@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-# Basch Script ot initialize GPIO
+# Bash Script to initialize GPIO
 
 sudo groupadd gpio
 sudo usermod -aG gpio root
@@ -26,13 +26,13 @@ fi
 # if 1st argument is 1, turn on the LED
 if [[ "$1" -eq 1 ]] 
 then
-	sudo echo 1 > /sys/class/gpio/gpio79/value
+	echo 1 > /sys/class/gpio/gpio79/value
 	exit 0
 
 # Check if the 2nd Argument is not Empty
 elif [[ "$1" -eq 0 ]] 
 then	
-	sudo echo 0 > /sys/class/gpio/gpio79/value
+	echo 0 > /sys/class/gpio/gpio79/value
 	exit 0	
 fi
 
