@@ -39,8 +39,6 @@ bool light_down_led() {
 int main(int argc, char* argv[]) {
 
     openlog(NULL, 0, LOG_USER);
-
-    int rc = 0;
         
     /* Grant Access to GPIO pins */
     system ("echo 79 > /sys/class/gpio/export");
