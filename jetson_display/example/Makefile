@@ -1,2 +1,2 @@
 all:
-	g++ display.cpp ../src/JHLEDBackpack.cpp -I../src -o display.cpp
+	g++ display.cpp ../src/JHLEDBackpack.cpp -I../src -o display
