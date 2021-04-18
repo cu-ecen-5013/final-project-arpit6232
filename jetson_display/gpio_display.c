@@ -18,7 +18,7 @@ bool do_gpio() {
     int rc;
         
     /* Grant Access to GPIO pins */
-    rc = system ("echo 79 > /sys/class/gpio/export");
+    rc = system ("sudo echo 79 > /sys/class/gpio/export");
     if(rc<1) {
         syslog(LOG_ERR, "gpio79 access failed");
         return false;
@@ -27,7 +27,7 @@ bool do_gpio() {
     }
 
     /* Set GPIO direction */
-    rc = system ("echo out > /sys/class/gpio/gpio79/direction");
+    rc = system ("sudo echo out > /sys/class/gpio/gpio79/direction");
     if(rc<1) {
         syslog(LOG_ERR, "Unable to set gpio79 direction to out");
         return false;
@@ -40,7 +40,7 @@ bool do_gpio() {
 
 bool light_up_led() {
     int rc;
-    rc = system ("echo 1 > /sys/class/gpio/gpio79/value");
+    rc = system ("sudo echo 1 > /sys/class/gpio/gpio79/value");
     if(rc<1) {
         syslog(LOG_ERR, "GPIO79 - LED failed to light on");
         return false;
@@ -52,7 +52,7 @@ bool light_up_led() {
 
 bool light_down_led() {
     int rc;
-    rc = system ("echo 0 > /sys/class/gpio/gpio79/value");
+    rc = system ("sudo echo 0 > /sys/class/gpio/gpio79/value");
     if(rc<1) {
         syslog(LOG_ERR, "GPIO79 - LED Failed to turn OFF");
         return false;
@@ -66,46 +66,38 @@ int main(int argc, char* argv[]) {
     openlog(NULL, 0, LOG_USER);
 
     int rc = 0;
-    
-    if(strcmp(argv[1],"help") == 0) {
-        printf("./display type status\n");
-        printf("type = gpio\n");
-        printf("if type = gpio\n");
-        printf("status = on OR off \n");
-        printf("if type = sevenseg\n");
-        printf("status = one OR zero \n");
-        printf(" ** EXAMPLE 1 ** \n");
-        printf("./display gpio on\n");
-        printf(" ** EXAMPLE 2 ** \n");
-        printf("./display gpio off\n");
-        return 0;
-    } else if(strcmp(argv[1],"gpio") == 0) {
         
-        /* Setup GPIO system calls */
-        rc = do_gpio();
-        if(rc == 0) {
-            printf("GPIO Instatiation failed in main\n");
-            return -1;
-        }
-
-        /* Light up LED Logic */
-        if(strcmp(argv[2],"on")) {
-            rc = light_up_led();
-            if(rc == 0) {
-                printf("Unable to Lightup LED\n");
-            }
-        } else if(strcmp(argv[2],"off")) { /* Power off LED Logic */
-            rc = light_down_led();
-            if(rc == 0) {
-                printf("Unable to Lightup LED\n");
-            }
-        } else {
-            printf("Invalid GPIO option\n");
-            syslog(LOG_ERR, "Invalid State option for GPIO");
-        }
-
+    /* Grant Access to GPIO pins */
+    rc = system ("sudo echo 79 > /sys/class/gpio/export");
+    if(rc<1) {
+        syslog(LOG_ERR, "gpio79 access failed");
+        return false;
     } else {
-        printf("1st Argument should specify 'gpio' \r\n ");
-        syslog(LOG_ERR, "Display Method not selected");
+        syslog(LOG_INFO, "gpio79 access granted");
+    }
+
+    /* Set GPIO direction */
+    rc = system ("sudo echo out > /sys/class/gpio/gpio79/direction");
+    if(rc<1) {
+        syslog(LOG_ERR, "Unable to set gpio79 direction to out");
+        return false;
+    } else {
+        syslog(LOG_INFO, "gpio79 Pin set to Out direction");
+    }
+
+    /* Light up LED Logic */
+    if(strcmp(argv[2],"on") == 0) {
+        rc = light_up_led();
+        if(rc == 0) {
+            printf("Unable to Lightup LED\n");
+        }
+    } else if(strcmp(argv[2],"off") == 0) { /* Power off LED Logic */
+        rc = light_down_led();
+        if(rc == 0) {
+            printf("Unable to Lightup LED\n");
+        }
+    } else {
+        printf("Invalid GPIO option\n");
+        syslog(LOG_ERR, "Invalid State option for GPIO");
     }
 }
