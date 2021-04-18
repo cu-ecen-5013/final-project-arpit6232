@@ -1,6 +1,4 @@
 #include <stdio.h>
-// #include <termios.h>
-// #include <time.h>
 #include <stdbool.h>
 #include <stdarg.h>
 #include <syslog.h>
@@ -69,9 +67,9 @@ int main(int argc, char* argv[]) {
 
     int rc = 0;
     
-    if(argv[1],"help") {
+    if(strcmp(argv[1],"help") == 0) {
         printf("./display type status\n");
-        printf("type = gpio OR sevenseg\n");
+        printf("type = gpio\n");
         printf("if type = gpio\n");
         printf("status = on OR off \n");
         printf("if type = sevenseg\n");
@@ -81,7 +79,7 @@ int main(int argc, char* argv[]) {
         printf(" ** EXAMPLE 2 ** \n");
         printf("./display gpio off\n");
         return 0;
-    } else if(strcmp(argv[1],"gpio")) {
+    } else if(strcmp(argv[1],"gpio") == 0) {
         
         /* Setup GPIO system calls */
         rc = do_gpio();
