@@ -68,30 +68,30 @@ int main(int argc, char* argv[]) {
     int rc = 0;
         
     /* Grant Access to GPIO pins */
-    rc = system ("sudo echo 79 > /sys/class/gpio/export");
+    rc = system ("echo 79 > /sys/class/gpio/export");
     if(rc<1) {
         syslog(LOG_ERR, "gpio79 access failed");
-        return false;
+        // return false;
     } else {
         syslog(LOG_INFO, "gpio79 access granted");
     }
 
     /* Set GPIO direction */
-    rc = system ("sudo echo out > /sys/class/gpio/gpio79/direction");
+    rc = system ("echo out > /sys/class/gpio/gpio79/direction");
     if(rc<1) {
         syslog(LOG_ERR, "Unable to set gpio79 direction to out");
-        return false;
+        // return false;
     } else {
         syslog(LOG_INFO, "gpio79 Pin set to Out direction");
     }
 
     /* Light up LED Logic */
-    if(strcmp(argv[2],"on") == 0) {
+    if(argv[1] == "n") {
         rc = light_up_led();
         if(rc == 0) {
             printf("Unable to Lightup LED\n");
         }
-    } else if(strcmp(argv[2],"off") == 0) { /* Power off LED Logic */
+    } else if(argv[1] == "f") { /* Power off LED Logic */
         rc = light_down_led();
         if(rc == 0) {
             printf("Unable to Lightup LED\n");
