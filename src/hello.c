@@ -2,6 +2,6 @@
 
 int main()
 {
-    printf(“Hello from Arduino World\n”);
+    printf("Hello from Arduino World \n");
     return 0;
-};
+}
