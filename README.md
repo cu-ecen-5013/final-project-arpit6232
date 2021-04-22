@@ -40,6 +40,8 @@ bitbake final-project-image
     - Additional Yocto receipes 
         - [Yocto receipes with systemd init]https://github.com/cu-ecen-5013/final-project-CalebProvost/tree/yocto-layer
 
+3. [Arpit Savarkar's Final Project Video](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/wiki/Arpit-Savarkar's-Final-Project-Video)
+
 
 ## Sprint 4 - Final Project Demonstration 
 
