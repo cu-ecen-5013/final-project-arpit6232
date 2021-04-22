@@ -11,6 +11,19 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 
 - Issues in this repository are duplicated. Please use this link only tracking on [issues](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues)
 
+## Code source download (Takes 5-6 hours for Yocto to build)
+```
+git clone https://github.com/CalebProvost/dockter-l4t.git
+docker pull calebprovost/dockter-l4t:sdk_installed
+docker run -it -v $PWD:/home/user/build --name dl4t calebprovost/dockter-l4t:sdk_installed bash
+git clone https://github.com/OE4T/tegra-demo-distro.git && cd tegra-demo-distro/
+git submodule update --init --recursive
+git clone https://github.com/cu-ecen-5013/final-project-CalebProvost.git --branch=yocto-layer --single-branch layers/meta-final-project
+unset DISTRO && unset MACHINE
+. ./setup-env --machine jetson-nano-2gb-devkit --distro final-project
+bitbake final-project-image
+```
+
 ## Sprint 4 - Final Project Demonstration 
 
 ### Code and Future goal setup
