@@ -11,7 +11,7 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 
 - Issues in this repository are duplicated. Please use this link only tracking on [issues](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues)
 
-## Code source download (Takes 5-6 hours for Yocto to build)
+## Code source download over Docker (Takes 5-6 hours for Yocto to build)
 ```
 git clone https://github.com/CalebProvost/dockter-l4t.git
 docker pull calebprovost/dockter-l4t:sdk_installed
@@ -23,6 +23,23 @@ unset DISTRO && unset MACHINE
 . ./setup-env --machine jetson-nano-2gb-devkit --distro final-project
 bitbake final-project-image
 ```
+
+## Project Contribution (Summary)
+1. Computer Vision - Machine Learning - TinyML 
+    - [Custom Library](https://github.com/arpit6232/arduino-library)
+    - [Nueral Network for Micro-controllers](https://github.com/arpit6232/visualwakeup_aesd)
+    - [API, setup and Response](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues/24)
+    - [Dockerize building on Host](https://hub.docker.com/repository/docker/arpit6232/arduino_cli)
+    - [Arduino-cli for Person Detection on Jetson Nano](https://github.com/cu-ecen-5013/final-project-arpit6232/blob/0d40fbcefad26e7cc435347949e6527a70a7e3b1/cli.sh)
+
+2. Yocto Integration for OE4T tegra 
+    - Forum Discussion for analysis
+        - [Board Partition]https://github.com/OE4T/meta-tegra/discussions/661
+        - [Camera Module](https://github.com/OE4T/meta-tegra/discussions/653)
+        - [arduino-cli test for ARM64](https://github.com/arduino/ArduinoCore-mbed/issues/176)
+    - Additional Yocto receipes 
+        - [Yocto receipes with systemd init]https://github.com/cu-ecen-5013/final-project-CalebProvost/tree/yocto-layer
+
 
 ## Sprint 4 - Final Project Demonstration 
 
