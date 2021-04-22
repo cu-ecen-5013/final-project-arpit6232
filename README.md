@@ -11,6 +11,20 @@ This Repository Contains the Tensorflow Code for Deploying Tiny Machine learning
 
 - Issues in this repository are duplicated. Please use this link only tracking on [issues](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/issues)
 
+## Sprint 4 - Final Project Demonstration 
+
+### Code and Future goal setup
+
+1. [Integrate systemd Init script for the arduino cli over Yocto](https://github.com/cu-ecen-5013/final-project-CalebProvost/commit/1638714ecaf2a8d41b95062672a6b2827731ebb1)
+2. Compile, clean code and QA Docker file for final submission docker file.
+3. Project Demonstration and Setup.
+4. Future Goal projects
+    - https://github.com/cu-ecen-5013/final-project-CalebProvost/tree/yocto_layer_fix_With_i2c
+    - https://github.com/cu-ecen-5013/final-project-arpit6232/tree/main/jetson_display
+
+### Final Project Demo 
+- [Arpit Savarkar's Final Project Video](https://github.com/AESD-Course-Project/AESD-Course-Project.github.io/wiki/Arpit-Savarkar's-Final-Project-Video)
+
 ## Sprint 3
 
 ### Code and Linked Issues
